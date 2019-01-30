@@ -7,6 +7,8 @@
             "email": "lemoine.joseph@gmail.com"
         }
     ],
+    "type": "symfony-bundle",
+    "license": "MIT",
     "require": {
         "php": "^7.0",
         "symfony/symfony": "^2.8",
