@@ -1,0 +1,9 @@
+parameters:
+    jihel.vikingpay.plugin.vikingpay.class: Jihel\VikingPayBundle\Plugin\VikingPayPlugin
+
+services:
+    jihel.vikingpay.plugin.vikingpay:
+        class: %jihel.vikingpay.plugin.vikingpay.class%
+        calls:
+            - ['setAdapter', ['@jihel.vikingpay.adapter.vikingpay']]
+        tags: [{name: payment.plugin}]

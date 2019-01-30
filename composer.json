@@ -1,0 +1,19 @@
+{
+    "name": "jihel/jms-core-payment/viking-pay-plugin",
+    "description": "Viking pay plugin adapter for JMSPaymentCoreBundle",
+    "authors": [
+        {
+            "name": "Joseph Lemoine",
+            "email": "lemoine.joseph@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "symfony/symfony": ">=3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jihel\\VikingPayBundle\\": "src"
+        }
+    }
+}

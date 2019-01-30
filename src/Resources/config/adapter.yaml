@@ -1,0 +1,10 @@
+parameters:
+    jihel.vikingpay.adapter.vikingpay.class: Jihel\VikingPayBundle\Adapter\VikingPayAdapter
+
+services:
+    jihel.vikingpay.adapter.vikingpay:
+        class: '%jihel.vikingpay.adapter.vikingpay.class%'
+        arguments:
+            - {'timeout': 20}
+            - '%jihel.viking_pay.accounts%'
+            - '%kernel.environment%'

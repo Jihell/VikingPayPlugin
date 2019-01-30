@@ -1,0 +1,22 @@
+form:
+    label:
+        holder: Nom du titulaire de la carte
+        number: Numéro de carte
+        expire_month: Mois d'expiration
+        expire_year: Année d'expiration
+        code: CVC
+    error:
+        required: Ce champ est requis !
+        credit_card_max_limit_exceeded: Le montant est trop élevé !
+        payment_method_required: Vous devez choisir un moyen de paiement !
+
+payment:
+    state:
+        1: Approuvé
+        2: Approbation
+        3: Annulé
+        4: Expiré
+        5: Echoué
+        6: Nouveau
+        7: Débit en cours
+        8: Débité
