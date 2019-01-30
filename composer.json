@@ -8,8 +8,8 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "symfony/symfony": ">=3.4",
+        "php": "^7.0",
+        "symfony/symfony": "^2.8",
         "jms/payment-core-bundle": "^1.4"
     },
     "autoload": {
