@@ -22,6 +22,8 @@ class VikingPayAdapter
     const BASE_URL_SANDBOX = 'https://test.oppwa.com/v1/';
     const BASE_URL_PROD = 'https://oppwa.com/v1/';
 
+    const DEFAULT_MID = 'default';
+
     /**
      * @var array
      */
@@ -81,8 +83,10 @@ class VikingPayAdapter
      * @param string $mid
      * @return array
      */
-    protected function getInitialQueryParameters(string $mid)
+    protected function getInitialQueryParameters(FinancialTransactionInterface $transaction)
     {
+        $mid = $transaction->getExtendedData()->get('mid') ?? static::DEFAULT_MID;
+
         return [
             'authentication.userId' => $this->accounts[$mid]['userId'],
             'authentication.password' => $this->accounts[$mid]['password'],
@@ -101,7 +105,7 @@ class VikingPayAdapter
     public function registration(FinancialTransactionInterface $transaction)
     {
         $url = 'registrations';
-        $data = $this->getInitialQueryParameters($transaction->getExtendedData()->get('mid'));
+        $data = $this->getInitialQueryParameters($transaction);
 
         $data['card.holder'] = $transaction->getExtendedData()->get('holder');
         $data['card.number'] = $transaction->getExtendedData()->get('number');
@@ -142,7 +146,7 @@ class VikingPayAdapter
     {
         $url = sprintf('registrations/%s/payments', $this->getToken($transaction));
 
-        $data = $this->getInitialQueryParameters($transaction->getExtendedData()->get('mid'));
+        $data = $this->getInitialQueryParameters($transaction);
         $data['amount'] = $transaction->getRequestedAmount();
         $data['currency'] = 'EUR';
         $data['paymentType'] = 'DB';
@@ -201,7 +205,7 @@ class VikingPayAdapter
 
         $url = sprintf('payments/%s', $referenceNumber);
 
-        $data = $this->getInitialQueryParameters($transaction->getExtendedData()->get('mid'));
+        $data = $this->getInitialQueryParameters($transaction);
         $data['amount'] = $transaction->getRequestedAmount();
         $data['currency'] = 'EUR';
         $data['paymentType'] = 'RF';
